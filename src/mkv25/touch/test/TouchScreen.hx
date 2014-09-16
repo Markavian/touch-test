@@ -1,6 +1,7 @@
 package mkv25.touch.test;
 import flash.display.Stage;
 import openfl.display.Sprite;
+import openfl.events.Event;
 import openfl.events.MouseEvent;
 import openfl.text.TextField;
 import openfl.text.TextFormatAlign;
@@ -8,6 +9,7 @@ import openfl.text.TextFormatAlign;
 class TouchScreen
 {
 	public var artwork:Sprite;
+	public var background:CenteredBackground;
 	
 	var mouseDownCounter:Counter;
 	var mouseUpCounter:Counter;
@@ -24,6 +26,7 @@ class TouchScreen
 	
 	public function setup(stage:Stage):Void
 	{
+		background = CenteredBackground.make().setAsset("img/fire-chibi.png");
 		stage.addChild(artwork);
 		
 		mouseDownCounter = Counter.make(artwork).move(50, 50).label("Mouse Down");
@@ -36,6 +39,8 @@ class TouchScreen
 		stage.addEventListener(MouseEvent.MOUSE_UP, handle_mouseUp);
 		stage.addEventListener(MouseEvent.MOUSE_MOVE, handle_mouseMove);
 		stage.addEventListener(MouseEvent.CLICK, handle_mouseClick);
+		
+		stage.addEventListener(Event.RESIZE, handle_stageResize);
 	}
 	
 	function handle_mouseDown(e:MouseEvent):Void
@@ -79,5 +84,10 @@ class TouchScreen
 		{
 			mouseMoveCounter_whileMouseUp.increment();
 		}
+	}
+	
+	function handle_stageResize(e:Event):Void
+	{
+		
 	}
 }
