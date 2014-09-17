@@ -19,7 +19,7 @@ class Counter
 	public function new() 
 	{
 		artwork = new Sprite();
-		text = Text.makeTextField("fonts/finkheavy.ttf", 24, 0xFFEEDD, TextFormatAlign.CENTER);
+		text = Text.makeTextField("fonts/finkheavy.ttf", 26, 0xFFDDCC, TextFormatAlign.CENTER);
 		text.width = 400;
 		text.height = 50;
 		
